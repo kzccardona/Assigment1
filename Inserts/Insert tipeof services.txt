@@ -1,0 +1,2 @@
+insert into TYPE_OF_SERVICES (id, description) values (1, x);
+insert into TYPE_OF_SERVICES (id, description) values (2, black);
