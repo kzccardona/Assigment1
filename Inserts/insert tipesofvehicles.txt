@@ -1,2 +1,0 @@
-insert into TYPE_OF_VEHICLES (id, description) values (1, sedan);
-insert into TYPE_OF_VEHICLES (id, description) values (1, camioneta);
