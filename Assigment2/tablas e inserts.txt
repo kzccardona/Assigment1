@@ -81,6 +81,18 @@ DESCUENTOS DECIMAL(20,2),
 VALORNETO DECIMAL(20,2)
 );
 
+ CREATE TABLE DRIVERS
+(
+ id int PRIMARY KEY
+,name varchar2(255)
+,last_name varchar2(255)
+,identification varchar2(255)
+,cell_number varchar2(255)
+,email varchar2(255)
+,license varchar2(255)
+,language_id int
+,country_id int);
+
 -------------------*************--------------------
 ------------------/INICIO SECUENCIAS/-----------------------
 
@@ -119,6 +131,11 @@ INCREMENT BY 1;
 CREATE SEQUENCE TIPOS_DE_PAGO_SEQ
 START WITH 1
 INCREMENT BY 1;
+
+CREATE SEQUENCE drivers_seq
+  START WITH 1
+  INCREMENT BY 1
+  NOCYCLE;
 ------------------/FIN SECUENCIAS---------------------------
 
 
@@ -1166,6 +1183,93 @@ insert into CLIENTES (ID, ID_PAIS, IDENTIFICACION , NOMBRE , APELLIDOS, CELULAR,
 insert into CLIENTES (ID, ID_PAIS, IDENTIFICACION , NOMBRE , APELLIDOS, CELULAR, EMAIL, EMAIL2, EMPRESA, NOMBRE_EMPRESA) values (CLIENTES_SEQ.NEXTVAL, 1, '4587200921', 'Leia', 'Waldocke', '4441396139', 'swaldocke1n@goo.ne.jp', 'swaldocke1n@google.com', 'FALSO', 'Skajo');
 
 
+
+---------------------------------------------------------//drivers//----------------------------------------------------------------------------------------
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Philip', 'Ambrosio', '724-72-1388', '9162983943', 'pambrosio0@baidu.com', '496559051-1', 1, 1);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Angelica', 'Scannell', '266-95-4863', '7948156985', 'ascannell1@homestead.com', '954737100-2', 2, 2);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Jania', 'Couch', '578-13-2523', '9632090299', 'jcouch2@netlog.com', '491634911-3', 3, 3);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Bennie', 'Cripps', '262-54-7029', '6758147411', 'bcripps3@linkedin.com', '922117903-6', 4, 4);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Orson', 'Welland', '296-12-7819', '7948650738', 'owelland4@vistaprint.com', '786162961-9', 5, 5);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Lindy', 'Heinert', '884-32-0207', '3487712617', 'lheinert5@taobao.com', '318612684-3', 6, 6);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Halie', 'Gosart', '459-10-3974', '5586366785', 'hgosart6@last.fm', '711697642-6', 7, 7);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Clementine', 'Broadfield', '546-30-7192', '6293216169', 'cbroadfield7@dedecms.com', '944512279-8', 8, 8);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Torrin', 'Presho', '413-80-1619', '1468884089', 'tpresho8@rambler.ru', '202667619-4', 9, 9);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Ranee', 'Hamshaw', '768-63-5024', '3566571176', 'rhamshaw9@wix.com', '922794282-3', 10, 10);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Meridith', 'Pool', '520-46-8718', '3768973583', 'mpoola@fotki.com', '002183951-4', 11, 11);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Audrey', 'Demeter', '453-60-8010', '3778807726', 'ademeterb@exblog.jp', '012081302-5', 12, 12);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Oneida', 'Ure', '506-61-7611', '1356024637', 'ourec@homestead.com', '066047444-1', 13, 13);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Farris', 'Perez', '852-30-0365', '3787203910', 'fperezd@sbwire.com', '558205264-X', 14, 14);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Clementina', 'Tume', '516-49-4648', '3085953858', 'ctumee@zimbio.com', '455462366-1', 15, 15);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Thedrick', 'Ellse', '333-34-2002', '8679857103', 'tellsef@businesswire.com', '396090444-4', 16, 16);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Jephthah', 'Moorton', '278-65-1121', '9529190190', 'jmoortong@walmart.com', '840186369-4', 17, 17);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Ally', 'Conant', '832-38-0919', '3101826062', 'aconanth@ebay.com', '913033660-0', 18, 18);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Isidore', 'Coaker', '682-22-3826', '3476347335', 'icoakeri@i2i.jp', '099952704-5', 19, 19);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Sherye', 'Covolini', '503-20-9362', '5144573678', 'scovolinij@myspace.com', '488525082-X', 20, 20);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Cob', 'Rootham', '579-48-1734', '6084466211', 'croothamk@exblog.jp', '371465997-8', 21, 21);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Auguste', 'Edowes', '540-61-6720', '7252814542', 'aedowesl@constantcontact.com', '138353625-2', 22, 22);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Carolyn', 'Dunlap', '823-59-5933', '2695115724', 'cdunlapm@samsung.com', '043302403-8', 23, 23);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Ezra', 'Bowller', '531-33-1110', '5377519783', 'ebowllern@utexas.edu', '682124391-3', 24, 24);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Lane', 'Musprat', '710-84-8290', '4932889688', 'lmusprato@intel.com', '264002920-7', 25, 25);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Meridel', 'Richmont', '846-83-5034', '5203217345', 'mrichmontp@nationalgeographic.com', '284626947-5', 26, 26);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Susie', 'Shaddick', '730-99-0695', '4481621901', 'sshaddickq@wikia.com', '629121189-0', 27, 27);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Thibaud', 'Gehricke', '867-70-3481', '3098197580', 'tgehricker@intel.com', '872140224-8', 28, 28);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Joellen', 'George', '123-32-6372', '5181503027', 'jgeorges@phoca.cz', '244409402-6', 29, 29);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Domini', 'Garmanson', '234-85-2031', '3011020424', 'dgarmansont@shareasale.com', '772724807-X', 30, 30);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Vinita', 'McGilvra', '884-65-5251', '1633411943', 'vmcgilvrau@mayoclinic.com', '791489622-5', 31, 31);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Baillie', 'Minchinton', '132-25-1431', '4189716176', 'bminchintonv@woothemes.com', '219951931-7', 32, 32);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Clemmie', 'Kloser', '639-25-0797', '9527496755', 'ckloserw@netlog.com', '101237782-2', 33, 33);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Albie', 'Morison', '385-30-6692', '5517555685', 'amorisonx@imageshack.us', '531293862-9', 34, 34);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Jerrilyn', 'Bairstow', '635-81-3415', '5443386246', 'jbairstowy@lycos.com', '182400511-3', 35, 35);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Georgeanne', 'Lambarth', '237-94-3853', '2903224066', 'glambarthz@jiathis.com', '119533624-1', 36, 36);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Georgi', 'Gellert', '376-89-1723', '9742755259', 'ggellert10@marketwatch.com', '203936627-X', 37, 37);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Frannie', 'Griffin', '741-76-0767', '2345196986', 'fgriffin11@cafepress.com', '138510631-X', 38, 38);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Winfred', 'Treweke', '696-45-7164', '6732217447', 'wtreweke12@microsoft.com', '781022237-6', 39, 39);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Noni', 'Antrum', '372-36-8188', '3649800631', 'nantrum13@woothemes.com', '297706200-9', 40, 40);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Nolan', 'Leonards', '184-17-1024', '2647016306', 'nleonards14@va.gov', '404098203-7', 41, 41);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Brandy', 'Plomer', '120-07-1534', '4544340896', 'bplomer15@weebly.com', '209945629-1', 42, 42);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Annalee', 'Sowman', '432-16-7535', '2554786254', 'asowman16@acquirethisname.com', '571106967-5', 43, 43);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Odilia', 'Birkin', '144-14-9612', '4211704046', 'obirkin17@netlog.com', '005945278-1', 44, 44);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Amy', 'Lukianovich', '444-63-1230', '3847675487', 'alukianovich18@wsj.com', '360638824-1', 45, 45);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Meir', 'Bywater', '153-34-0813', '3359288744', 'mbywater19@samsung.com', '952906711-9', 46, 46);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Francklin', 'Gilbanks', '682-60-0410', '9971005982', 'fgilbanks1a@edublogs.org', '941220789-1', 47, 47);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Inna', 'Dormer', '812-50-0507', '8173279803', 'idormer1b@purevolume.com', '289937212-2', 48, 48);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Dallas', 'Novis', '706-43-2571', '6952454667', 'dnovis1c@blogs.com', '585436757-2', 49, 49);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Ramsey', 'Schiesterl', '139-70-0078', '2316323503', 'rschiesterl1d@nhs.uk', '272616956-2', 50, 50);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Issy', 'Atwater', '739-68-6271', '9951464042', 'iatwater1e@businessinsider.com', '274020101-X', 51, 51);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Larina', 'Westall', '680-86-4728', '2859388650', 'lwestall1f@yellowbook.com', '967402831-5', 52, 52);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Aloysius', 'Francke', '738-11-7015', '5957918357', 'afrancke1g@meetup.com', '302556968-9', 53, 53);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Barbara', 'Gyenes', '450-24-3919', '4357476627', 'bgyenes1h@ftc.gov', '030513373-X', 54, 54);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Dee dee', 'Larose', '109-81-5147', '9981567036', 'dlarose1i@booking.com', '961227466-5', 55, 55);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Karola', 'Jerschke', '856-29-3652', '4149647496', 'kjerschke1j@google.co.jp', '484821916-7', 56, 56);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Raddie', 'Basini-Gazzi', '655-36-5857', '2731267797', 'rbasinigazzi1k@indiatimes.com', '937338313-2', 57, 57);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Darsey', 'Pocklington', '487-60-4876', '5784691588', 'dpocklington1l@cbslocal.com', '348119426-9', 58, 58);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Celestia', 'Fendlow', '727-41-8940', '3355901650', 'cfendlow1m@usda.gov', '475646742-3', 59, 59);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Ibbie', 'Malling', '514-46-2716', '6856510432', 'imalling1n@twitpic.com', '586660949-5', 60, 60);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Merwyn', 'Shane', '608-60-3871', '7936919653', 'mshane1o@dot.gov', '864853453-4', 61, 61);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Elisha', 'Okenden', '256-24-0901', '6659208757', 'eokenden1p@tiny.cc', '811342163-7', 62, 62);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Perry', 'Eaden', '376-07-4573', '9651451116', 'peaden1q@bing.com', '594275998-7', 63, 63);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Dieter', 'Tibbotts', '127-18-0906', '3077499177', 'dtibbotts1r@qq.com', '506416400-9', 64, 64);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Hebert', 'Brea', '354-72-9995', '1399238392', 'hbrea1s@surveymonkey.com', '187193437-0', 65, 65);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Nolan', 'Yarnell', '479-36-3091', '1888428519', 'nyarnell1t@washingtonpost.com', '535686982-7', 66, 66);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Bendicty', 'Reynold', '159-25-3072', '8904213532', 'breynold1u@ft.com', '164095821-5', 67, 67);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Spike', 'Grisewood', '139-24-4464', '4618996290', 'sgrisewood1v@imageshack.us', '069994374-4', 68, 68);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Meier', 'Adelberg', '497-27-7723', '2032907266', 'madelberg1w@plala.or.jp', '088035057-1', 69, 69);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Bevon', 'Kivits', '601-26-2640', '4562670372', 'bkivits1x@unblog.fr', '569695349-2', 70, 70);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Sib', 'Ruegg', '821-13-2695', '9586539669', 'sruegg1y@nba.com', '414467952-7', 71, 71);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Fin', 'McDermot', '246-46-2144', '8287824476', 'fmcdermot1z@uiuc.edu', '036439700-4', 72, 72);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Sigismondo', 'Nucciotti', '391-03-9019', '4746815253', 'snucciotti20@xinhuanet.com', '482403899-5', 73, 73);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Marrilee', 'Supple', '597-95-0174', '3039815688', 'msupple21@weather.com', '839800336-7', 74, 74);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Merline', 'Tym', '649-43-6585', '4863662411', 'mtym22@tumblr.com', '825886082-8', 75, 75);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Gabbey', 'Donner', '724-17-6260', '9859412445', 'gdonner23@fda.gov', '958789124-4', 76, 76);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Eben', 'Serjeant', '478-75-5633', '6201367332', 'eserjeant24@ow.ly', '992302955-7', 77, 77);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Leilah', 'Churches', '682-77-7149', '5818343995', 'lchurches25@constantcontact.com', '507381114-3', 78, 78);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Starr', 'Shory', '586-49-1130', '2491916667', 'sshory26@china.com.cn', '585533169-5', 79, 79);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Oralee', 'Barus', '810-88-0855', '8055608906', 'obarus27@biblegateway.com', '882372136-9', 80, 80);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Kennan', 'Harg', '735-56-6263', '6993582977', 'kharg28@prlog.org', '874281777-3', 81, 81);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Hugibert', 'Budgeon', '648-51-8383', '1778711389', 'hbudgeon29@cbslocal.com', '272200899-8', 82, 82);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Rosanne', 'Alp', '498-24-6211', '8783246346', 'ralp2a@dagondesign.com', '070171958-3', 83, 83);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Lia', 'Lukock', '502-52-7937', '5599008926', 'llukock2b@go.com', '696515749-6', 84, 84);
+insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Dianne', 'Piola', '128-97-3163', '5615712873', 'dpiola2c@constantcontact.com', '187503153-7', 85, 85);
 -------------/INICIO TABLA VIAJES/--------
 ALTER TABLE VIAJES
 ADD CONSTRAINT FKID_CLIENTE
