@@ -93,6 +93,13 @@ VALORNETO DECIMAL(20,2)
 ,language_id int
 ,country_id int);
 
+
+CREATE TABLE TYPE_OF_SERVICES
+(
+ id int PRIMARY KEY
+,description varchar2(255)
+);
+
 -------------------*************--------------------
 ------------------/INICIO SECUENCIAS/-----------------------
 
@@ -136,6 +143,12 @@ CREATE SEQUENCE drivers_seq
   START WITH 1
   INCREMENT BY 1
   NOCYCLE;
+
+CREATE SEQUENCE type_of_services_seq
+  START WITH 1
+  INCREMENT BY 1
+  NOCYCLE;
+
 ------------------/FIN SECUENCIAS---------------------------
 
 
@@ -1270,6 +1283,12 @@ insert into DRIVERS (id, name, last_name, identification, cell_number, email, li
 insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Rosanne', 'Alp', '498-24-6211', '8783246346', 'ralp2a@dagondesign.com', '070171958-3', 83, 83);
 insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Lia', 'Lukock', '502-52-7937', '5599008926', 'llukock2b@go.com', '696515749-6', 84, 84);
 insert into DRIVERS (id, name, last_name, identification, cell_number, email, license, language_id, country_id) values (drivers_seq.NEXTVAL, 'Dianne', 'Piola', '128-97-3163', '5615712873', 'dpiola2c@constantcontact.com', '187503153-7', 85, 85);
+
+------------------------------------------/(TYPE_OF_SERVICes/-----------------------------
+insert into TYPE_OF_SERVICES ( id, description ) values (TYPE_OF_SERVICES_SEQ.NEXTVAL, 'black');
+insert into TYPE_OF_SERVICES ( id, description ) values (TYPE_OF_SERVICES_SEQ.NEXTVAL, 'x');
+
+
 -------------/INICIO TABLA VIAJES/--------
 ALTER TABLE VIAJES
 ADD CONSTRAINT FKID_CLIENTE
