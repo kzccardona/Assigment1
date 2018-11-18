@@ -1,0 +1,221 @@
+--Punto 1
+CREATE OR REPLACE VIEW MEDIOS_PAGO_CLIENTES AS
+  SELECT  DISTINCT CLIENTES.ID AS CLIENTES_ID
+  ,(CLIENTES.NOMBRE  || ' ' || CLIENTES.APELLIDOS) AS NOMBRE_CLIENTE
+  ,MEDIOS_DE_PAGO.ID AS MEDIO_PAGO_ID
+  ,TIPOS_DE_PAGO.NOMBRE AS TIPO
+  ,MEDIOS_DE_PAGO.DATOS AS DETALLES_MEDIO_PAGO
+  ,CLIENTES.EMPRESA AS EMPRESARIAL
+  ,CASE CLIENTES.EMPRESA WHEN 'FALSO' THEN NULL ELSE CLIENTES.NOMBRE_EMPRESA END AS NOMBRE_EMPRESA
+  FROM CLIENTES
+  INNER JOIN MEDIOS_DE_PAGO
+  ON CLIENTES.ID = MEDIOS_DE_PAGO.ID_CLIENTE
+  INNER JOIN TIPOS_DE_PAGO
+  ON MEDIOS_DE_PAGO.ID_TIPO_PAGO = TIPOS_DE_PAGO.ID;
+
+
+--Punto 2
+  CREATE OR REPLACE VIEW VIAJES_CLIENTES AS
+  SELECT VIAJES.FECHAVIAJE AS FECHA_VIAJE
+  ,DRIVERS.NAME AS NOMBRE_CONDUCTOR
+  ,VEHICULOS.PLACA AS PLACA_VEHICULO
+  ,(CLIENTES.NOMBRE  || ' ' || CLIENTES.APELLIDOS) AS NOMBRE_CLIENTE
+  ,FACTURAS.VALORNETO AS VALOR_TOTAL 
+  ,VIAJES.TARIFA_DINAMICA 
+  ,TYPE_OF_SERVICES.DESCRIPTION AS TIPO_SERVICIO
+  ,CIUDADES.NOMBRE AS CIUDAD_VIAJE
+  FROM VIAJES
+  INNER JOIN DRIVERS
+  ON VIAJES.ID_CONDUCTORVEHICULO = DRIVERS.ID
+  INNER JOIN VEHICULOS
+  ON VEHICULOS.ID_CONDUCTOR = DRIVERS.ID
+  INNER JOIN CLIENTES
+  ON CLIENTES.ID = ID_CLIENTE
+  INNER JOIN FACTURAS
+  ON FACTURAS.ID_CLIENTE = CLIENTES.ID
+  INNER JOIN TYPE_OF_SERVICES
+  ON TYPE_OF_SERVICES.ID = VIAJES.ID_TIPOSERVICIO
+  INNER JOIN CIUDADES
+  ON CIUDADES.ID = VIAJES.ID_CIUDAD
+  ORDER BY VIAJES.FECHAVIAJE;
+ 
+ 
+--Puntos 3 
+ EXPLAIN PLAN FOR
+  SELECT VIAJES.FECHAVIAJE AS FECHA_VIAJE
+  ,DRIVERS.NAME AS NOMBRE_CONDUCTOR
+  ,VEHICULOS.PLACA AS PLACA_VEHICULO
+  ,(CLIENTES.NOMBRE  || ' ' || CLIENTES.APELLIDOS) AS NOMBRE_CLIENTE
+  ,FACTURAS.VALORNETO AS VALOR_TOTAL 
+  ,VIAJES.TARIFA_DINAMICA 
+  ,TYPE_OF_SERVICES.DESCRIPTION AS TIPO_SERVICIO
+  ,CIUDADES.NOMBRE AS CIUDAD_VIAJE
+  FROM VIAJES
+  INNER JOIN DRIVERS
+  ON VIAJES.ID_CONDUCTORVEHICULO = DRIVERS.ID
+  INNER JOIN VEHICULOS
+  ON VEHICULOS.ID_CONDUCTOR = DRIVERS.ID
+  INNER JOIN CLIENTES
+  ON CLIENTES.ID = ID_CLIENTE
+  INNER JOIN FACTURAS
+  ON FACTURAS.ID_CLIENTE = CLIENTES.ID
+  INNER JOIN TYPE_OF_SERVICES
+  ON TYPE_OF_SERVICES.ID = VIAJES.ID_TIPOSERVICIO
+  INNER JOIN CIUDADES
+  ON CIUDADES.ID = VIAJES.ID_CIUDAD
+  ORDER BY VIAJES.FECHAVIAJE;
+  
+  
+   SELECT * FROM TABLE (DBMS_XPLAN.DISPLAY);
+
+   CREATE INDEX "INDICE" ON "FACTURAS" ("VALORNETO"); 
+   CREATE INDEX "INDICE_FECHA" ON "VIAJES" ("FECHAVIAJE"); 
+
+
+--punto 4
+CREATE TABLE CIUDADES (
+
+ID INT PRIMARY KEY
+
+,NOMBRE VARCHAR2(255)
+
+,KILOMETRO DECIMAL(20,2)
+
+,MINUTO DECIMAL(20,2)
+
+,TARIFA_BASE DECIMAL(20,2)
+
+);
+
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (1, 'MEDELLIN', 764.525994, 178.571429, 2500);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (2, 'BOGOTA', 522.43456, 173.1273, 2400);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (3, 'CALI', 464.525994, 174.1273, 2400);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (4, 'CARTAGENA', 465.525123, 183.1273, 2700);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (5, 'BARRANQUILLA',364.525994,171.1273, 2300);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (6, 'MANIZALES', 544.525994, 172.2373, 2400);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (7, 'PEREIRA', 439.525994, 174.1273, 2200);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (8, 'ARMENIA', 564.525994, 173.9273, 2100);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (9, 'SANTA MARTA', 664.7359994, 171.9173, 2600);
+
+insert into CIUDADES (ID,  NOMBRE,  KILOMETRO, MINUTO, TARIFA_BASE) values  (10,'CUCUTA', 213.525994, 172.5253, 2000);
+
+------------------------------------------------/5/----------------------------------
+
+create or replace function VALOR_DISTANCIA (distancia in DECIMAL, ciudad in varchar)
+  return number as 
+  Valor number;
+  Error exception;
+  valKm decimal(20,6);
+  begin
+     select VALOR_KILOMETRO into valKm from CIUDADES where NOMBRE = ciudad;
+      if distancia >= 0 then 
+          Valor := valKm * distancia;
+          else
+          raise Error;
+      end if;
+      Valor := distancia * valKm;
+      return round(Valor,4);
+exception
+	when Error then
+	dbms_output.put_line('Ocurrió un error con los valores');
+    return 0;
+    when OTHERS then 
+    dbms_output.put_line('Ocurrió un error con los valores');
+    return 0;
+end;
+
+declare 
+a DECIMAL(20,2) :=-20.68;
+b VARCHAR(20) := 'MEDELLIN';
+C number := 0;
+begin 
+C := VALOR_DISTANCIA(a,b);
+dbms_output.put_line('resultado ' || C);
+end;
+
+
+------------------------------/6/------------------------------------------------------------
+
+create or replace function VALOR_TIEMPO (minutos in NUMBER, ciudad in varchar)
+  return number as 
+  Valor number;
+  Error exception;
+  valMin decimal(20,6);
+  begin
+      select VALOR_MINUTO into valMin from CIUDADES where NOMBRE = ciudad;
+      if minutos >= 0 
+          then 
+          Valor := valMin * minutos;
+          else
+          raise Error;
+      end if;
+      return Round(Valor,5);
+exception
+	when Error then
+	dbms_output.put_line('Ocurrió un error con los valores');
+    return 0;
+    when OTHERS then 
+    dbms_output.put_line('Ocurrió un error con los valores');
+    return 0;
+end;
+
+
+declare 
+a NUMBER :=-28;
+b VARCHAR(20) := 'MEDELLIN';
+C number := 0;
+begin 
+C := VALOR_TIEMPO(a,b);
+dbms_output.put_line('resultado ' || C);
+end;
+
+-----------------------------------------------------/7/-----------------------------------------
+
+create or replace procedure CALCULAR_TARIFA (IDVIAJE in number) as
+    ESTADO VIAJES.ESTADO%TYPE;
+    CIUDAD CIUDADES.NOMBRE%TYPE;
+    DISTANCIA VIAJES.KILOMETROS%TYPE;
+    TIEMPO VIAJES.TIEMPO%TYPE;
+    TARIFABASE CIUDADES.BASE%TYPE;
+    VALDISTANCIA NUMBER;
+    VALTIEMPO NUMBER;
+    VALORTOTAL NUMBER;
+    VALORDET NUMBER;
+begin
+    select ESTADO  into ESTADO from VIAJES where ID = IDVIAJE;
+    IF ESTADO != 'REALIZADO' THEN
+        UPDATE VIAJES SET TARIFA  = 0 WHERE ID = IDVIAJE;
+    ELSE
+        SELECT NOMBRE,BASE,KILOMETROS,TIEMPO 
+        INTO CIUDAD,TARIFABASE,DISTANCIA,TIEMPO
+        FROM VIAJES
+        INNER JOIN CIUDADES
+        ON VIAJES.ID_CIUDAD = CIUDADES.ID
+        WHERE VIAJES.ID = IDVIAJE;
+        
+        FOR VALORDETALLES IN (SELECT SUM(VALOR) AS TOTAL FROM TARIFAS_DINAMICAS WHERE ID_VIAJE = IDVIAJE) LOOP
+            VALORDET := VALORDETALLES.TOTAL;
+        END LOOP;
+         
+        VALDISTANCIA := VALOR_DISTANCIA(DISTANCIA,CIUDAD);
+        VALTIEMPO := VALOR_TIEMPO(TIEMPO,CIUDAD);
+        VALORTOTAL := VALDISTANCIA + VALTIEMPO + TARIFABASE + VALORDET;
+        UPDATE VIAJES SET TARIFA  = VALORTOTAL WHERE ID = IDVIAJE;
+        dbms_output.put_line('valor total ' || VALORTOTAL);
+    END IF;
+    EXCEPTION
+    when OTHERS then 
+    dbms_output.put_line('Ocurrió un error con los valores, se actualizarà el campo con valor 0');
+    UPDATE VIAJES SET TARIFA  = 0 WHERE ID = IDVIAJE;
+end;
+
+ 
